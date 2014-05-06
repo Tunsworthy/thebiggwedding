@@ -5,21 +5,34 @@ class PeopleController < ApplicationController
 
   def list
     @people = Person.order("last_name ASC").to_a
-    # Remove bridge and groom
-    @people.delete_if { |p| p.name == 'BIGG, Ryan' }
-    @people.delete_if { |p| p.name == 'LYNCH, Sharon' }
+    @couple = []
+    @couple << ryan = @people.find { |p| p.name == 'BIGG, Ryan' }
+    @couple << sharon = @people.find { |p| p.name == 'BIGG, Sharon' }
+
+    @b_parents = []
     # Remove bride's parents
-    @people.delete_if { |p| p.name == 'LYNCH, Frank' }
-    @people.delete_if { |p| p.name == 'LYNCH, Marilyn' }
-    @people.delete_if { |p| p.name == 'GLEESON, Brenda' }
-    @people.delete_if { |p| p.name == 'SULLIVAN, John' }
+    @b_parents << frank = @people.find { |p| p.name == 'LYNCH, Frank' }
+    @b_parents << marilyn = @people.find { |p| p.name == 'LYNCH, Marilyn' }
+    @b_parents << marilyn = @people.find { |p| p.name == 'GLEESON, Brenda' }
+    @b_parents << marilyn = @people.find { |p| p.name == 'SULLIVAN, John' }
     # Remove groom's parents
-    @people.delete_if { |p| p.name == 'BIGG, Karen' }
-    @people.delete_if { |p| p.name == 'BIGG, Nigel' }
-    @people.delete_if { |p| p.name == 'DE ZEN COOK, Stella' }
-    # Remove bridal party
-    @people.delete_if { |p| p.name == 'LYNCH, Helen' }
-    @people.delete_if { |p| p.name == 'FURUSA, Kerrianne' }
+
+    @g_parents = []
+    # Remove bride's parents
+    @g_parents << nigel = @people.find { |p| p.name == 'BIGG, Nigel' }
+    @g_parents << karen = @people.find { |p| p.name == 'BIGG, Karen' }
+    @g_parents << stella = @people.find { |p| p.name == 'DE ZEN COOK, Stella' }
+
+    @b_party = []
+    @b_party << helen = @people.find { |p| p.name == 'LYNCH, Helen' }
+    @b_party << helen = @people.find { |p| p.name == 'FURUSA, Kerrianne' }
+    @b_party << helen = @people.find { |p| p.name == 'BIGG, Scott' }
+    @b_party << helen = @people.find { |p| p.name == 'BAKER, Stephen' }
+
+    @people -= @couple
+    @people -= @b_parents
+    @people -= @g_parents
+    @people -= @b_party
 
     halfway = @people.length/2
     @people_1 = @people[0..halfway]
