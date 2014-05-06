@@ -7,10 +7,11 @@
           <td width='25%'>
             <h4>Table #<%= table %></h4>
             <% people.each do |person| %>
-              <strong><%= person.seat_number %></strong>
-              <%= link_to person.name, edit_person_path(person) %>
-              <strong><em><%= person_details(person) %></em></strong>
-              <br>
+              <div class='person'>
+                <strong><%= person.seat_number %></strong>
+                <%= link_to person.name, edit_person_path(person) %>
+                <strong><em><%= person_details(person) %></em></strong>
+              </div>
             <% end %>
           </td>
         <% end %>
