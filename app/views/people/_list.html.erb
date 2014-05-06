@@ -1,0 +1,21 @@
+<div class='col-xs-6'>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Surname</th>
+        <th>First name</th>
+        <th>Table Number</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% people.each do |person| %>
+        <tr>
+          <td><strong><%= person.last_name %></strong></td>
+          <td><strong><%= person.first_name %></strong></td>
+          <td><strong><%= person.seat_number %></strong></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
