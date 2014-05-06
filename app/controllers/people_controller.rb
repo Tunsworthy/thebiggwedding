@@ -4,7 +4,28 @@ class PeopleController < ApplicationController
   end
 
   def list
-    index
+    @people = Person.order("last_name ASC").to_a
+    # Remove bridge and groom
+    @people.delete_if { |p| p.name == 'BIGG, Ryan' }
+    @people.delete_if { |p| p.name == 'LYNCH, Sharon' }
+    # Remove bride's parents
+    @people.delete_if { |p| p.name == 'LYNCH, Frank' }
+    @people.delete_if { |p| p.name == 'LYNCH, Marilyn' }
+    @people.delete_if { |p| p.name == 'GLEESON, Brenda' }
+    @people.delete_if { |p| p.name == 'SULLIVAN, John' }
+    # Remove groom's parents
+    @people.delete_if { |p| p.name == 'BIGG, Karen' }
+    @people.delete_if { |p| p.name == 'BIGG, Nigel' }
+    @people.delete_if { |p| p.name == 'DE ZEN COOK, Stella' }
+    # Remove bridal party
+    @people.delete_if { |p| p.name == 'LYNCH, Helen' }
+    @people.delete_if { |p| p.name == 'FURUSA, Kerrianne' }
+
+    halfway = @people.length/2
+    @people_1 = @people[0..halfway]
+    @people_2 = @people[(halfway+1)..-1]
+
+
   end
 
   def new

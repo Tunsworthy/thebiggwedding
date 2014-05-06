@@ -1,19 +1,6 @@
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Table Number</th>
-      <th>Seat Number</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><strong><%= "#{person.last_name.upcase}, #{person.first_name}" %></strong></td>
-        <td><%= person.table_number %></td>
-        <td><%= person.seat_number %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class='people_list'>
+  <div class='row'>
+    <%= render "list", :people => @people_1 %>
+    <%= render "list", :people => @people_2 %>
+  </div>
+</div>
