@@ -1,3 +1,4 @@
+
 <h1>People</h1>
 
 <%= link_to "Add new person", new_person_path, class: 'btn btn-primary' %>
@@ -16,12 +17,17 @@
 
   <tbody>
     <% @people.each do |person| %>
+      <%= form_for(person) do |f| %>
       <tr>
         <td><strong><%= link_to "#{person.last_name.upcase}, #{person.first_name}", [:edit, person] %></strong></td>
-        <td><%= person.table_number %></td>
-        <td><%= person.seat_number %></td>
+        <td><%= f.select :table_number, (0..30).to_a, include_blank: true %></td>
+        <td><%= f.select :seat_number, (1..12).to_a, include_blank: true %></td>
+        <td><%= f.submit :class => "btn btn-primary" %></td>
         <td><%= link_to 'Remove', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <% end %>
   </tbody>
 </table>
+
+

@@ -30,7 +30,7 @@
 
       <div class="form-group">
         <%= f.label :table_number %><br>
-        <%= f.select :table_number, (0..13).to_a, include_blank: true %>
+        <%= f.select :table_number, (0..30).to_a, include_blank: true %>
       </div>
 
       <div class="form-group">
@@ -45,7 +45,7 @@
 
       <div class="form-group">
         <%= f.label :dietary_requirement %><br>
-        <%= f.select :dietary_requirement, ["Gluten Free", "Vegetarian", "Dairy Free", "Allergy", "Seafood", "Special"], { include_blank: true }, { :class => "select2" }  %>
+        <%= f.select :dietary_requirement, ["Hala","Gluten Free", "Vegetarian", "Dairy Free", "Allergy", "Seafood", "Special"], { include_blank: true }, { :class => "select2" }  %>
       </div>
 
       <div class="form-group">
