@@ -19,7 +19,7 @@
     <% @people.each do |person| %>
       <%= form_for(person) do |f| %>
       <tr>
-        <td><strong><%= link_to "#{person.last_name.upcase}, #{person.first_name}", [:edit, person] %></strong></td>
+        <td><strong><%= link_to "#{person.last_name.upcase} #{person.first_name}", [:edit, person] %></strong></td>
         <td><%= f.select :table_number, (0..30).to_a, include_blank: true %></td>
         <td><%= f.select :seat_number, (1..12).to_a, include_blank: true %></td>
         <td><%= f.submit :class => "btn btn-primary" %></td>

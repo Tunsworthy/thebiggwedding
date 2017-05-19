@@ -2,6 +2,8 @@ module TableHelper
   def person_details(person)
     details = ["*"]
     case person.dietary_requirement
+      when "Hala"
+        details << "H"
       when "Special"
         details << "S"
         details << person.other_requirements
