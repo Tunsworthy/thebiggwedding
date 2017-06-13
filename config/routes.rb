@@ -5,4 +5,5 @@ Wedding::Application.routes.draw do
   get '/photos' => 'photos#index', as: 'photos'
   resources :people
   root :to => 'people#index'
+
 end

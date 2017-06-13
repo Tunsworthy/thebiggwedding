@@ -79,6 +79,9 @@ class PeopleController < ApplicationController
     redirect_to people_path
   end
 
+
+
+
   private
 
   def person_params

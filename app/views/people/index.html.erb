@@ -5,29 +5,28 @@
 <%= link_to "Name List", people_list_path, class: 'btn btn-primary' %>
 <%= link_to "Table List", table_list_path, class: 'btn btn-primary' %>
 
-<table class='table table-striped'>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Table Number</th>
-      <th>Seat Number</th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <%= form_for(person) do |f| %>
+  <table class='table table-striped'>
+    <thead>
       <tr>
-        <td><strong><%= link_to "#{person.last_name.upcase} #{person.first_name}", [:edit, person] %></strong></td>
-        <td><%= f.select :table_number, (0..30).to_a, include_blank: true %></td>
-        <td><%= f.select :seat_number, (1..12).to_a, include_blank: true %></td>
-        <td><%= f.submit :class => "btn btn-primary" %></td>
-        <td><%= link_to 'Remove', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Table Number</th>
+        <th>Seat Number</th>
+        <th></th>
       </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-
+    <tbody>
+      <% @people.each do |person| %>
+        <%= form_for(person) do |f| %>
+        <tr>
+          <td><strong><%= link_to "#{person.last_name.upcase} #{person.first_name}", [:edit, person] %></strong></td>
+          <td><%= f.select :table_number, (0..30).to_a, include_blank: true %></td>
+          <td><%= f.select :seat_number, (1..12).to_a, include_blank: true %></td>
+          <td><%= f.submit :class => "btn btn-primary" %></td>
+          <td><%= link_to 'Remove', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>

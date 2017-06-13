@@ -18,4 +18,7 @@ class Person < ActiveRecord::Base
   def photo_number
     self[:photo_number].split(",") if self[:photo_number]
   end
+
+
+
 end
